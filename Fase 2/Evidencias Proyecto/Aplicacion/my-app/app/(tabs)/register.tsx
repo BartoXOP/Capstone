@@ -101,7 +101,7 @@ export default function RegisterScreen() {
     try {
       await addDoc(collection(db, 'usuarios'), usuario);
       Alert.alert('¡Registro exitoso!', `Bienvenido, ${nombres}`);
-      router.push('/login');
+      router.push('/(tabs)/login');
     } catch {
       Alert.alert('Error', 'No se pudo guardar el usuario en la nube. Intenta de nuevo.');
     }

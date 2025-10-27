@@ -121,7 +121,7 @@ export default function AddTutorScreen() {
           />
         </View>
 
-        <Text style={styles.title}>Añadir tutor</Text>
+        <Text style={styles.title}>Agregar tutor</Text>
 
         {/* Campos del formulario */}
         <View style={styles.formContainer}>
