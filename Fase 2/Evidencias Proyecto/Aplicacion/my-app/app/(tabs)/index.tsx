@@ -1,7 +1,7 @@
 import { useSyncRutActivo } from '@/hooks/use-sync-rut-activo';
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
-import { Platform, StyleSheet, Text, TouchableHighlight, View, SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 export default function HomeScreen() {
   useSyncRutActivo();
