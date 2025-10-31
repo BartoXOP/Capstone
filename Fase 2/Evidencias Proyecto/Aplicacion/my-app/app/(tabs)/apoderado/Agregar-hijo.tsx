@@ -50,7 +50,7 @@ export default function AddChildScreen() {
         if (rutGuardado) {
           setRutUsuario(rutGuardado);
         } else {
-          Alert.alert('Error', 'No se encontró el RUT del usuario activo.');
+          Alert.alert('Error', 'No se encontrï¿½ el RUT del usuario activo.');
         }
         // Limpiar posibles borradores previos
         await AsyncStorage.multiRemove(['nuevoHijoData', 'nuevoHijoHorario', 'nuevoHijoInforme']);
@@ -96,11 +96,11 @@ export default function AddChildScreen() {
 
       await AsyncStorage.setItem('nuevoHijoData', JSON.stringify(payload));
 
-      Alert.alert('Datos guardados', 'Ahora agrega el horario del niño.');
+      Alert.alert('Datos guardados', 'Ahora agrega el horario del niï¿½o.');
       router.push('/apoderado/Agregar_Horario_hijo');
     } catch (error) {
       console.error('Error al guardar el borrador del hijo:', error);
-      Alert.alert('Error', 'No se pudo guardar la información localmente.');
+      Alert.alert('Error', 'No se pudo guardar la informaciï¿½n localmente.');
     } finally {
       setLoading(false);
     }
@@ -120,7 +120,7 @@ export default function AddChildScreen() {
         />
       </View>
 
-      <Text style={styles.title}>Añadir hijo</Text>
+      <Text style={styles.title}>Agregar hijo</Text>
 
       <TextInput
         style={styles.input}
