@@ -1,15 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, Pressable } from 'react-native';
+import { useSyncRutActivo } from '@/hooks/use-sync-rut-activo';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Image } from 'expo-image';
 import { Link, useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Ionicons } from '@expo/vector-icons';
-import { useSyncRutActivo } from '@/hooks/use-sync-rut-activo';
+import React, { useEffect, useState } from 'react';
+import { Pressable, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 
 export default function ProfileScreen() {
   const router = useRouter();
   const [userName, setUserName] = useState('');
   useSyncRutActivo();
+
+  const handleLogout = async () => {
+    try {
+      // Limpiar todos los datos de sesión
+      await AsyncStorage.clear();
+      // Redirigir al login
+      router.replace('/login');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
 
   useEffect(() => {
     const loadUserData = async () => {
@@ -82,6 +93,14 @@ export default function ProfileScreen() {
           <Text style={styles.buttonText}>Editar tutor</Text>
         </TouchableHighlight>
       </Link>
+
+      <TouchableHighlight 
+        style={[styles.button, styles.logoutButton]} 
+        underlayColor="#b33d3d"
+        onPress={handleLogout}
+      >
+        <Text style={styles.buttonText}>Cerrar sesión</Text>
+      </TouchableHighlight>
     </View>
   );
 }
@@ -93,6 +112,10 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
     alignItems: 'center',
+  },
+  logoutButton: {
+    backgroundColor: '#d32f2f',
+    marginTop: 20,
   },
   backButton: {
     position: 'absolute',
